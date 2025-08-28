@@ -1,8 +1,8 @@
-from ..helpers import core
+from app.helpers.core import get_input
 
-_input = core.get_input(day=1)
+_input = get_input(day=1)
 
-def part_one(input: str = _input):
+def part_one(input: str):
     answer = 0
     list_one, list_two = [], []
     for line in iter(input.splitlines()):
@@ -19,7 +19,7 @@ def part_one(input: str = _input):
 
     return answer
 
-def part_two(input: str = _input):
+def part_two(input: str):
     answer = 0
     list_one, list_two = [], []
 
@@ -34,8 +34,9 @@ def part_two(input: str = _input):
     
     return answer
 
-def main():
-    result_one, result_two = part_one(), part_two()
+def main(input: str = _input):
+    result_one, result_two = part_one(input), part_two(input)
+
     print(f"Answer one: {result_one}")
     print(f"Answer two: {result_two}")
 

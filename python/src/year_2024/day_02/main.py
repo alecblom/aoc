@@ -1,7 +1,8 @@
+def is_valid_list(values: list[int]):
+    return (sorted(values) == values or sorted(values, reverse=True) == values) and all(
+        1 <= abs(values[i] - values[i+1]) <= 3 for i in range(len(values) - 1))
 
-
-def part_one():
-    input = get_input()
+def part_one(input: str):
     safe_reports = 0
     for line in input.splitlines():
         vals = list(map(int, line.split()))
@@ -9,8 +10,7 @@ def part_one():
     
     print(safe_reports)
 
-def part_two():
-    input = get_input()
+def part_two(input: str):
     safe_reports = 0
     for line in input.splitlines():
         vals = list(map(int, line.split()))
@@ -24,18 +24,9 @@ def part_two():
                     break
     print(f"Answer: {safe_reports}")
 
-def is_valid_list(values: list[int]):
-    return (sorted(values) == values or sorted(values, reverse=True) == values) and all(
-        1 <= abs(values[i] - values[i+1]) <= 3
-        for i in range(len(values) - 1))
 
-
-def get_input(file_name: str = "input.txt") -> str:
-    file = open(file_name)
-    content = file.read()
-    file.close()
-    return content
+def main(input: str):
+    return part_one(input), part_two(input)
 
 if __name__ == "__main__":
-    # part_one()
-    part_two()
+    main()

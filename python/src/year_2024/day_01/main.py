@@ -1,6 +1,4 @@
-from app.helpers.core import get_input
-
-_input = get_input(day=1)
+from src.helpers.core import get_input
 
 def part_one(input: str):
     answer = 0
@@ -34,11 +32,8 @@ def part_two(input: str):
     
     return answer
 
-def main(input: str = _input):
-    result_one, result_two = part_one(input), part_two(input)
-
-    print(f"Answer one: {result_one}")
-    print(f"Answer two: {result_two}")
+def main(input: str) -> tuple[int, int]:
+    return part_one(input), part_two(input)
 
 if __name__ == "__main__":
     main()

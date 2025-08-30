@@ -1,28 +1,7 @@
-import core.helpers as helpers
-
-_input = helpers.get_input()
 _board: list[list] = []
 
-
-
-def part_one():
-    set_board()
-
-    result = 0
-    for (y, row) in enumerate(_board):
-        for (x, cell) in enumerate(row):
-            if cell == 'X':
-                for direction in get_directions(x, y):
-                    if find_xmas((x,y), direction): result += 1
-
-    print(f"Answer: {result}")
-
-
-def part_two():
-    d = ""
-
-def set_board():
-    for line in _input.splitlines(): _board.append(list(line))
+def set_board(input: str):
+    for line in input.splitlines(): _board.append(list(line))
 
 def get_directions(x: int, y: int) -> list[str]:
     directions = []
@@ -42,7 +21,7 @@ def get_directions(x: int, y: int) -> list[str]:
         if right: directions.append("up-right")
         if left: directions.append("up-left")
     return directions
-    
+
 def find_xmas(start_pos: tuple[int, int], direction: str) -> bool:
     for (i, letter) in enumerate(list("XMAS")):
         current = step(start_pos, direction, i)
@@ -63,5 +42,25 @@ def step(start_pos: tuple[int, int], direction: str, step_size: int = 1):
 
     return _board[y][x]
 
+def part_one(input: str):
+    set_board(input)
+
+    result = 0
+    for (y, row) in enumerate(_board):
+        for (x, cell) in enumerate(row):
+            if cell == 'X':
+                for direction in get_directions(x, y):
+                    if find_xmas((x,y), direction): result += 1
+
+    return result
+
+
+def part_two(input: str):
+    return "NOT IMPLEMENTED"
+
+
+def main(input: str):
+    return part_one(input), part_two(input)
+
 if __name__ == "__main__":
-    part_one()
+    main()

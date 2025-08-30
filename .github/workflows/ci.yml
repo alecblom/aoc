@@ -35,4 +35,4 @@ jobs:
 
       # Runs a single command using the runners shell
       - name: Run a one-line script
-        run: python ./2024/python/app/day_01/main.py
+        run: poetry run_day --test-mode 1

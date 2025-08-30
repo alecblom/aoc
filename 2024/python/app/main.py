@@ -1,19 +1,22 @@
 import argparse
+import importlib
 import os
-from app import *
 
-def opener(path, flags):
-    curr_dir = os.path.dirname(__file__)
-    dir_fd = os.open(curr_dir, os.O_RDWR)
-    return os.open(path, flags, dir_fd=dir_fd)
+# def opener(path, flags):
+#     curr_dir = os.path.dirname(__file__)
+#     dir_fd = os.open(curr_dir, os.O_RDWR)
+#     return os.open(path, flags, dir_fd=dir_fd)
 
 def main(day: int, test_mode: bool = True):
-    curr_dir = os.path.dirname(__file__)
-    # dir_fd = os.open(folder, os.O_RDWR)
-    filename = "test" if test_mode else "main"
-    folder = os.path.join("app", f"day_{day:02}", f"{filename}.py")
-    with open(folder, 'r', opener=opener) as file:
-        file.main()
+    exec_mode = "test" if test_mode else "main"
+    module = importlib.import_module(f"app.day_{day:02}.{exec_mode}")
+    module.main()
+
+    # curr_dir = os.path.dirname(__file__)
+    # # dir_fd = os.open(folder, os.O_RDWR)
+    # folder = os.path.join("app", f"day_{day:02}", f"{filename}.py")
+    # with open(folder, 'r', opener=opener) as file:
+    #     file.main()
 
 def cli():
     parser = argparse.ArgumentParser(description="Run the solution for a specific day of the advent of code 2024 edition.")

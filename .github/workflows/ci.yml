@@ -26,5 +26,5 @@ jobs:
       - name: Poetry install
         run: poetry install
 
-      - name: Run a one-line script
+      - name: Execute tests
         run: poetry run pytest test/

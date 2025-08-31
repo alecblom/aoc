@@ -1,15 +1,13 @@
 import argparse
-import importlib
-import os
 
 from src.helpers.executor import DayExecutor
-from src.helpers.core import get_input
+from src.helpers.input import get_input
 
 
 def main(year: int, day: int, test_mode: bool = True):
-    executor = DayExecutor(year, day, test_mode)
+    executor = DayExecutor(year, test_mode)
     part = 0
-    for result in  executor.execute():
+    for result in  executor.execute(day):
         part += 1
         print(f"Answer part {part}: {result}")
 

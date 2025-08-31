@@ -16,7 +16,7 @@ packages = [
 ]
 
 [project.scripts]
-run_day = 'src.main:cli'
+execute_day = 'src.main:cli'
 
 [build-system]
 requires = ["poetry-core>=2.0.0,<3.0.0"]

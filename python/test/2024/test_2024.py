@@ -6,6 +6,9 @@ from src.helpers.executor import DayExecutor
     "day,expected",
     [
         (1, (11, 31)),
+        (2, (2, 4)),
+        (3, (161, 48)),
+        (4, (18, 9)),
     ])
 def test_all_days(
     day: int,
